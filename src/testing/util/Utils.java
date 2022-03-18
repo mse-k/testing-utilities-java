@@ -16,7 +16,7 @@ public class Utils{
     }
     public static String createPlayerVar(Boolean makeNew){
         if (makeNew || playerVar == "uh") genVar();
-        runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");")
+        runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");");
     }
     private static String genVar() {
         return playerVar = String.valueOf((char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1))));
