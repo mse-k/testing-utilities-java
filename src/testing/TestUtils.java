@@ -16,8 +16,8 @@ public class TestUtils extends Mod{
     public TestUtils(){
         if(!headless){
             enableConsole =  experimental = true; //Dev mode
-            renderer.minZoom = 0.667f; //Zoom out farther
-            renderer.maxZoom = 24f; //Get a closer look at yourself
+            //renderer.minZoom = 0.667f; //Zoom out farther
+            //renderer.maxZoom = 24f; //Get a closer look at yourself
 
             Events.on(ClientLoadEvent.class, e -> {
                 TUIcons.init();
@@ -48,10 +48,4 @@ public class TestUtils extends Mod{
             tu.meta.description = tools.toString();
         }
     }
-
-    @Override
-    public void loadContent(){
-        //There is no content to load
-    }
-
 }
