@@ -29,9 +29,9 @@ public class Sandbox{
     public static void coreItems(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommandPlayer(
+                Utils.runCommand(
                     "Vars.content.items().each(i => p.core().items.set(i," +
-                    (fillMode ? "p.core().storageCapacity" : "0") +
+                    (fillMode ? Utils.getPlayerVar() + ".core().storageCapacity" : "0") +
                     "));"
                 );
             }else{
