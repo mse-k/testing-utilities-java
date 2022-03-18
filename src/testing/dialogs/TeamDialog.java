@@ -120,6 +120,6 @@ public class TeamDialog extends BaseDialog{
     }
 
     public String teamName(Team team){
-        return bundle.has("team." + team.name + ".name") ? bundle.get("team." + team.name + ".name") : String.valueOf(team.id);
+        return bundle.has("team." + team.name + ".name") ? bundle.get("team." + team.name + ".name") : "#" + team.id;
     }
 }
