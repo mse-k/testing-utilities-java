@@ -12,15 +12,15 @@ import static mindustry.Vars.*;
 public class Health{
     public static void heal(boolean invincibility){
         if(net.client()){
-            Utils.runCommandPlayer(
+            Utils.runCommand(
                 "p.unit().dead=false;" +
-                "p.unit().maxHealth=" + (invincibility ? "Number.MAX_VALUE" : "p.unit().type.health") + ";" +
+                "p.unit().shield=" + (invincibility ? "Number.MAX_VALUE" : "0") + ";" +
                 "p.unit().health=p.unit().maxHealth;"
             );
         }else if(player.unit() != null && player.unit().type != null){
             Unit u = player.unit();
             u.dead = false;
-            u.maxHealth(invincibility ? Float.POSITIVE_INFINITY : u.type.health);
+            u.shield = invincibility ? Float.POSITIVE_INFINITY : u.type.health;
             u.health = u.maxHealth;
         }
         Utils.spawnIconEffect(invincibility ? "invincibility" : "heal");
