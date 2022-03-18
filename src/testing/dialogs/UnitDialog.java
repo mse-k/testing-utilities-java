@@ -249,7 +249,7 @@ public class UnitDialog extends BaseDialog{
                 u.controller = player;
                 u.rotation = rot;
                 u.spawnedByCore = despawns;
-                Fx.unitControl.at = u, true;
+                Fx.unitControl.at(u, true);
             }
             hide();
         }
