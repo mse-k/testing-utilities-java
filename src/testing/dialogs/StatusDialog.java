@@ -145,8 +145,8 @@ public class StatusDialog extends BaseDialog{
     void apply(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommand("let tempEff = Vars.content.statusEffects().find(b => b.name === \"" + Utils.fixQuotes(status.name) + "\")");
-                Utils.runCommandPlayerFast(".unit().apply(tempEff, " + (perma ? "Number.MAX_VALUE" : duration * 60) + ");");
+                Utils.runCommand("let tempEff = Vars.content.statusEffects().find(b => b.name === \"" + Utils.fixQuotes(status.name) + "\")"); //TODO: bad, will fix later
+                Utils.runCommand(Utils.getPlayerVar() + ".unit().apply(tempEff, " + (perma ? "Number.MAX_VALUE" : duration * 60) + ");");
             }else if(player.unit() != null){
                 player.unit().apply(status, perma ? Float.MAX_VALUE : duration * 60);
             }
@@ -156,7 +156,7 @@ public class StatusDialog extends BaseDialog{
     void clearStatus(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommandPlayerFast(".unit().clearStatuses();");
+                Utils.runCommand(Utils.getPlayerVar() + ".unit().clearStatuses();");
             }else if(player.unit() != null){
                 player.unit().clearStatuses();
             }
