@@ -19,7 +19,7 @@ public class TeamChanger{
     public static void changeTeam(Team team){
         if(Utils.noCheat()){
             if(Vars.net.client()){
-                Utils.runCommandPlayerFast(".team(Team.get(" + team.id + "));");
+                Utils.getPlayerVar() + ".team(Team.get(" + team.id + "));");
             }else{
                 player.team(team);
             }
@@ -57,10 +57,10 @@ public class TeamChanger{
     }
 
     public static Team getNextTeam(){
-        if(player.team() == Team.sharded){
-            return Team.crux;
+        if(player.team() == Vars.state.rules.playerTeam){
+            return Vars.state.rules.waveTeam;
         }else{
-            return Team.sharded;
+            return Vars.state.rules.playerTeam;
         }
     }
 
@@ -72,6 +72,6 @@ public class TeamChanger{
 
     static String teamName(){
         String t = teamDialog.teamName(curTeam());
-        return "[#" + curTeam().color.toString() + "]" + t.substring(0, 1).toUpperCase() + t.substring(1);
+        return "[#" + curTeam().color.toString() + "]" + t.substring(0, 1).toUpperCase() + t.substring(1); //this is probably bad but i forgor what function to use to fix it
     }
 }
