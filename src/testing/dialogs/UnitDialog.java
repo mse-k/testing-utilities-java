@@ -225,7 +225,7 @@ public class UnitDialog extends BaseDialog{
             if(net.client()){
                 Utils.runCommand("let tempUnit = Vars.content.units().find(b => b.name === \"" + Utils.fixQuotes(spawnUnit.name) + "\")");
                 Utils.runCommand("let setPos = () => Tmp.v1.setToRandomDirection().setLength(" + radius * tilesize + "*Mathf.sqrt(Mathf.random())).add(" + spawnPos.x + "," + spawnPos.y + ")");
-                Utils.runCommand("for(let i=0;i<" + amount + ";i++){setPos();tempUnit.spawn(Team.get(" + spawnTeam.id + "),Tmp.v1.x,Tmp.v1.y);}");
+                Utils.runCommand("for(let i=0;i<" + amount + ";i++){setPos();tempUnit.spawn(Team.get(" + spawnTeam.id + "),Tmp.v1.x,Tmp.v1.y);}"); //TODO: not touching this
             }else{
                 for(int i = 0; i < amount; i++){
                     float r = radius * tilesize * Mathf.sqrt(Mathf.random());
@@ -239,19 +239,17 @@ public class UnitDialog extends BaseDialog{
     void transform(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommand("let tempUnit = Vars.content.units().find(b => b.name === \"" + Utils.fixQuotes(spawnUnit.name) + "\")");
-                Utils.runCommandPlayer(
-                    "let spawned = tempUnit.spawn(p.team(), p.x, p.y);" +
-                    "Call.unitControl(p, spawned);"
+                Utils.runCommand(
+                    "Call.unitControl(" + Utils.getPlayerVar() + ",♦=UnitTypes." + spawnUnit.name + ".spawn(" + Utils.getPlayerVar() + ".team()," + Utils.getPlayerVar() + ".x," + Utils.getPlayerVar() + ".y));" + //fun fact: pain
+                    (despawns ? "♦.spawnedByCore=true" : "") //89 chars for longest vanilla unit name (antumbra), should be fine
                 );
-                if(despawns) Utils.runCommand("spawned.spawnedByCore = true");
             }else if(player.unit() != null){
                 Unit u = spawnUnit.spawn(player.team(), player);
                 float rot = player.unit().rotation;
-                u.controller(player);
-                u.rotation(rot);
-                u.spawnedByCore(despawns);
-                Fx.unitControl.at(u, true);
+                u.controller = player;
+                u.rotation = rot;
+                u.spawnedByCore = despawns;
+                Fx.unitControl.at = u, true;
             }
             hide();
         }
