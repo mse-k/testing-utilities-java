@@ -19,7 +19,7 @@ public class TeamChanger{
     public static void changeTeam(Team team){
         if(Utils.noCheat()){
             if(Vars.net.client()){
-                Utils.getPlayerVar() + ".team(Team.get(" + team.id + "));");
+                Utils.runCommand(Utils.getPlayerVar() + ".team(Team.get(" + team.id + "));");
             }else{
                 player.team(team);
             }
