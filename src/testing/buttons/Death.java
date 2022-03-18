@@ -58,9 +58,9 @@ public class Death{
                     }
 
                     if(settings.getBool("tu-instakill")){
-                        u.elevation(0);
-                        u.health(-1);
-                        u.dead(true);
+                        u.elevation = 0;
+                        u.health = -1;
+                        u.dead = true;
                     }
                     u.kill();
                 }
@@ -75,7 +75,7 @@ public class Death{
             }else{
                 Unit u = player.unit();
                 if(u != null){
-                    u.type.spawn(u.team, u.x, u.y).rotation(u.rotation);
+                    u.type.spawn(u.team, u.x, u.y).rotation = u.rotation;
                     Fx.spawn.at(u);
                 }
             }
