@@ -10,6 +10,17 @@ import static arc.Core.*;
 import static mindustry.Vars.*;
 
 public class Utils{
+    private static String playerVar = "uh";
+    public static String getPlayerVar(){
+        return playerVar;
+    }
+    public static String createPlayerVar(Boolean makeNew){
+        if (makeNew || playerVar == "uh") genVar();
+        runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");")
+    }
+    private static String genVar() {
+        return playerVar = String.valueOf((char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1))));
+    }
     /** Extracts a number out of a string by removing every non-numerical character  */
     public static String extractNumber(String s){
         //God, I love google. I have no idea what the "[^\\d.]" part even is.
@@ -29,7 +40,8 @@ public class Utils{
                 }
             });
             */
-            Threads.throwAppException(new Throwable("No cheating! Don't use Testing Utilities in campaign!"));
+            //Threads.throwAppException(new Throwable("No cheating! Don't use Testing Utilities in campaign!"));
+            //you literally already check this dont crash the game
             return false;
         }
         return true;
@@ -39,16 +51,16 @@ public class Utils{
         Call.sendChatMessage("/js " + command);
     }
 
-    public static void runCommandPlayer(String command){
+    /*public static void runCommandPlayer(String command){
         runCommand("let p = Groups.player.find(p=>p.name==\"" + fixQuotes(player.name) + "\")");
         runCommand(command);
     }
     public static void runCommandPlayerFast(String command){
         runCommand("Groups.player.find(p=>p.name==\"" + fixQuotes(player.name) + "\")" + command);
-    }
+    }*/
 
     public static String fixQuotes(String s){
-        return s.replaceAll("\"", "\\\\\"");
+        return s.replaceAll("\"", "\\\\\""); // " > \\"
     }
 
     public static String roundAmount(float amount){
