@@ -43,13 +43,13 @@ public class Death{
         if(Utils.noCheat()){
             if(net.client()){
                 if(settings.getBool("tu-instakill")){
-                    Utils.runCommandPlayer(
-                        "p.unit().elevation = 0;" +
-                        "p.unit().health = -1;" +
-                        "p.unit().dead = true;"
+                    Utils.runCommand(
+                        Utils.getPlayerVar() + ".unit().elevation = 0;" +
+                        Utils.getPlayerVar() + ".unit().health = -1;" +
+                        Utils.getPlayerVar() + ".unit().dead = true;"
                     );
                 }
-                Utils.runCommandPlayerFast(".unit().kill();");
+                Utils.runCommand(Utils.getPlayerVar() + ".unit().kill();");
             }else{
                 Unit u = player.unit();
                 if(u != null){
@@ -71,7 +71,7 @@ public class Death{
     public static void mitosis(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommandPlayer("p.unit().type.spawn(p.team(), p.x, p.y);");
+                Utils.runCommand(Utils.getPlayerVar() + ".unit().type.spawn(p.team(), p.x, p.y);");
             }else{
                 Unit u = player.unit();
                 if(u != null){
