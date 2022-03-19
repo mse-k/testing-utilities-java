@@ -14,7 +14,7 @@ public class Utils{
     public static String getPlayerVar(){
         return playerVar;
     }
-    public static String createPlayerVar(Boolean makeNew){
+    public static void createPlayerVar(Boolean makeNew){
         if (makeNew || playerVar == "uh") genVar();
         runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");");
     }
