@@ -57,10 +57,10 @@ public class TeamChanger{
     }
 
     public static Team getNextTeam(){
-        if(player.team() == Vars.state.rules.playerTeam){
+        if(player.team() == Vars.state.rules.defaultTeam){
             return Vars.state.rules.waveTeam;
         }else{
-            return Vars.state.rules.playerTeam;
+            return Vars.state.rules.defaultTeam;
         }
     }
 
