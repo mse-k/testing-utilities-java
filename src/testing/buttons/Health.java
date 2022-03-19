@@ -13,9 +13,9 @@ public class Health{
     public static void heal(boolean invincibility){
         if(net.client()){
             Utils.runCommand(
-                "p.unit().dead=false;" +
-                "p.unit().shield=" + (invincibility ? "Number.MAX_VALUE" : "0") + ";" +
-                "p.unit().health=p.unit().maxHealth;"
+                Utils.getPlayerVar() + ".unit().dead=false;" +
+                Utils.getPlayerVar() + ".unit().shield=" + (invincibility ? "Number.MAX_VALUE" : "0") + ";" +
+                Utils.getPlayerVar() + ".unit().health=p.unit().maxHealth;"
             );
         }else if(player.unit() != null && player.unit().type != null){
             Unit u = player.unit();
