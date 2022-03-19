@@ -25,7 +25,7 @@ public class TestUtils extends Mod{
                 TUSettings.init();
                 Setup.init();
             });
-            Events.on(PlayerJoinEvent.class, e -> {
+            Events.on(PlayerJoin.class, e -> {
                 if (player != e.player) return;
                 Utils.createPlayerVar(true);
             });
