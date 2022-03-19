@@ -28,7 +28,7 @@ public class TestUtils extends Mod{
             Events.on(PlayerJoinEvent.class, e -> {
                 if (player != e.player) return;
                 Utils.createPlayerVar(true);
-            })
+            });
         }
     }
 
