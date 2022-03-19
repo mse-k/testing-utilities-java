@@ -71,7 +71,7 @@ public class Death{
     public static void mitosis(){
         if(Utils.noCheat()){
             if(net.client()){
-                Utils.runCommand(Utils.getPlayerVar() + ".unit().type.spawn(p.team(), p.x, p.y);");
+                Utils.runCommand(Utils.getPlayerVar() + ".unit().type.spawn(" + Utils.getPlayerVar() + ".team(), " + Utils.getPlayerVar() + ".x, " + Utils.getPlayerVar() + ".y);");
             }else{
                 Unit u = player.unit();
                 if(u != null){
