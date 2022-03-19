@@ -246,7 +246,7 @@ public class UnitDialog extends BaseDialog{
             }else if(player.unit() != null){
                 Unit u = spawnUnit.spawn(player.team(), player);
                 float rot = player.unit().rotation;
-                u.controller = player;
+                u.controller(player);
                 u.rotation = rot;
                 u.spawnedByCore = despawns;
                 Fx.unitControl.at(u, true);
