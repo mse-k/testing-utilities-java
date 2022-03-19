@@ -5,12 +5,16 @@ import arc.util.async.*;
 import mindustry.core.*;
 import mindustry.gen.*;
 import testing.content.*;
+import java.util.*
 
 import static arc.Core.*;
 import static mindustry.Vars.*;
 
 public class Utils{
     private static String playerVar = "uh";
+    private static final String varCharsList = "ͰͱͲͳͶͷͻͼͽͿΆΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϏϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϢϣϤϥϦϧϨϩϪϫϬϭϮϯϰϱϲϳϴϵϷϸϹϺϻϼϽϾϿ" //TODO: add more characters to lower the chance of 2 users getting the same one
+    // currently 127 chars long of greek and shit, could be better (check if a character is allowed with https://mothereff.in/js-variables)
+    private static Random random = new Random();
     public static String getPlayerVar(){
         return playerVar;
     }
@@ -19,7 +23,7 @@ public class Utils{
         runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");");
     }
     private static String genVar() {
-        return playerVar = String.valueOf((char) (0x4e00 + (int) (Math.random() * (0x9fa5 - 0x4e00 + 1))));
+        return playerVar = varCharsList.charAt(random.nextInt(varCharsList.length()));
     }
     /** Extracts a number out of a string by removing every non-numerical character  */
     public static String extractNumber(String s){
