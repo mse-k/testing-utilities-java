@@ -23,7 +23,7 @@ public class Utils{
         runCommand(playerVar + "=Groups.player.getByID(" + player.id + ");");
     }
     private static String genVar() {
-        return playerVar = varCharsList.charAt(random.nextInt(varCharsList.length()));
+        return playerVar = String.valueOf(varCharsList.charAt(random.nextInt(varCharsList.length())));
     }
     /** Extracts a number out of a string by removing every non-numerical character  */
     public static String extractNumber(String s){
@@ -54,14 +54,6 @@ public class Utils{
     public static void runCommand(String command){
         Call.sendChatMessage("/js " + command);
     }
-
-    /*public static void runCommandPlayer(String command){
-        runCommand("let p = Groups.player.find(p=>p.name==\"" + fixQuotes(player.name) + "\")");
-        runCommand(command);
-    }
-    public static void runCommandPlayerFast(String command){
-        runCommand("Groups.player.find(p=>p.name==\"" + fixQuotes(player.name) + "\")" + command);
-    }*/
 
     public static String fixQuotes(String s){
         return s.replaceAll("\"", "\\\\\""); // " > \\"
