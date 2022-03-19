@@ -5,14 +5,14 @@ import arc.util.async.*;
 import mindustry.core.*;
 import mindustry.gen.*;
 import testing.content.*;
-import java.util.*
+import java.util.*;
 
 import static arc.Core.*;
 import static mindustry.Vars.*;
 
 public class Utils{
     private static String playerVar = "uh";
-    private static final String varCharsList = "ͰͱͲͳͶͷͻͼͽͿΆΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϏϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϢϣϤϥϦϧϨϩϪϫϬϭϮϯϰϱϲϳϴϵϷϸϹϺϻϼϽϾϿ" //TODO: add more characters to lower the chance of 2 users getting the same one
+    private static final String varCharsList = "ͰͱͲͳͶͷͻͼͽͿΆΈΉΊΌΎΏΐΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩΪΫάέήίΰαβγδεζηθικλμνξοπρςστυφχψωϊϋόύώϏϐϑϒϓϔϕϖϗϘϙϚϛϜϝϞϟϠϡϢϣϤϥϦϧϨϩϪϫϬϭϮϯϰϱϲϳϴϵϷϸϹϺϻϼϽϾϿ"; //TODO: add more characters to lower the chance of 2 users getting the same one
     // currently 127 chars long of greek and shit, could be better (check if a character is allowed with https://mothereff.in/js-variables)
     private static Random random = new Random();
     public static String getPlayerVar(){
