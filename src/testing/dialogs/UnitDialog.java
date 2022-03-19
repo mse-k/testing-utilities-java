@@ -240,8 +240,8 @@ public class UnitDialog extends BaseDialog{
         if(Utils.noCheat()){
             if(net.client()){
                 Utils.runCommand(
-                    "Call.unitControl(" + Utils.getPlayerVar() + ",♦=UnitTypes." + spawnUnit.name + ".spawn(" + Utils.getPlayerVar() + ".team()," + Utils.getPlayerVar() + ".x," + Utils.getPlayerVar() + ".y));" + //fun fact: pain
-                    (despawns ? "♦.spawnedByCore=true" : "") //89 chars for longest vanilla unit name (antumbra), should be fine
+                    "Call.unitControl(" + Utils.getPlayerVar() + ",Δ=UnitTypes." + spawnUnit.name + ".spawn(" + Utils.getPlayerVar() + ".team()," + Utils.getPlayerVar() + ".x," + Utils.getPlayerVar() + ".y));" + //fun fact: pain
+                    (despawns ? "Δ.spawnedByCore=true" : "") //89 chars for longest vanilla unit name (antumbra), should be fine
                 );
             }else if(player.unit() != null){
                 Unit u = spawnUnit.spawn(player.team(), player);
